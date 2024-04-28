@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d45c9c12-e565-4aca-91d6-93e818dc8e41" name="Changes" comment="Creo el menu de bienvenida">
+    <list default="true" id="d45c9c12-e565-4aca-91d6-93e818dc8e41" name="Changes" comment="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Conversion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ExchangeRate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Conversor-de-Moneda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Conversor-de-Moneda.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Conversiones.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,21 +20,28 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2fKwIKG4cbj2YUZpUVyrgzZCB5T" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Principal.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -40,9 +49,24 @@
     "last_opened_file_path": "C:/Users/anuch/Desktop/AluraLatam/gson-2.10.1.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.scopes"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Principal" />
+      <module name="Conversor-de-Moneda" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Principal" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,12 +84,22 @@
       <option name="project" value="LOCAL" />
       <updated>1713563870190</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes">
+      <option name="closed" value="true" />
+      <created>1713719185193</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713719185193</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Creo el menu de bienvenida" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creo el menu de bienvenida" />
+    <MESSAGE value="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
