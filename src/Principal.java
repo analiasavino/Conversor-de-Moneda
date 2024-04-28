@@ -14,9 +14,9 @@ public class Principal {
         //Declaro parametros.
         Scanner scanner = new Scanner(System.in);
         String menu = """
-                1 Dolar Americano   USD.
-                2 Guarani Paraguayo PYG.
-                3 Peso Argentino    ARS.
+                1 Dolar Americano   USD ==> Peso Argentino ARS
+                2 Peso Argentino    ARS ==> Dolar Americano USD
+                3 
                 4 Peso Uruguayo     UYU.
                 5 Real Brasil       BRL.
                 6 Sol Peruano       PEN.
