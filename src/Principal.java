@@ -14,13 +14,13 @@ public class Principal {
         //Declaro parametros.
         Scanner scanner = new Scanner(System.in);
         String menu = """
-                1 Dolar Americano   USD ==> Peso Argentino ARS
+                1 Dolar Americano   USD ==> Peso Argentino  ARS
                 2 Peso Argentino    ARS ==> Dolar Americano USD
-                3 
-                4 Peso Uruguayo     UYU.
-                5 Real Brasil       BRL.
-                6 Sol Peruano       PEN.
-                7 Yuan Chino        CNY. 
+                3 Dolar Americano   USD ==> Real Brasileno  BRL
+                4 Real Brasileno    BRL ==> Dolar Americano USD
+                5 Dolar Americano   USD ==> Peso Colombinao COP
+                6 Peso Colombiano   COP ==> Dolar Americano USD
+                7 Otras conversiones. 
                 9 Para salir.
                 """;
 
@@ -29,69 +29,44 @@ public class Principal {
         System.out.println("***************************************" + '\n');
         String monedaDeOrigen = "";
         String monedaFinal = "";
+        double montoConvertido = 0;
 
         while (true) {
-            System.out.println("Por favor elija en que moneda desde la que desea convertir.");
+            System.out.println("Por favor elija la opcion deseada: ");
             System.out.println(menu);
             var opcion = scanner.nextInt();
             if (opcion == 9)
                 break;
+            System.out.println("Por favor elija el monto que desea convertir");
+            var montoAConvertir = scanner.nextDouble();
 
             switch (opcion) {
                 case 1:
                     monedaDeOrigen = "USD";
-                    break;
-                case 2:
-                    monedaDeOrigen = "PYG";
-                    break;
-                case 3:
-                    monedaDeOrigen = "ARS";
-                    break;
-                case 4:
-                    monedaDeOrigen = "UYU";
-                    break;
-                case 5:
-                    monedaDeOrigen = "BRL";
-                    break;
-                case 7:
-                    monedaDeOrigen = "PEN";
-                    break;
-                case 8:
-                    monedaDeOrigen = "CNY";
-                    break;
-            }
-            System.out.println("Por favor elija la moneda a la cual desea convertir.");
-            var opcion2 = scanner.nextInt();
-
-            switch (opcion2) {
-                case 1:
-                    monedaFinal = "USD";
-                    break;
-                case 2:
-                    monedaFinal = "PYG";
-                    break;
-                case 3:
                     monedaFinal = "ARS";
                     break;
-                case 4:
-                    monedaFinal = "UYU";
+                case 2:
+                    monedaDeOrigen = "ARS";
+                    monedaFinal = "USD";
                     break;
-                case 5:
+                case 3:
+                    monedaDeOrigen = "USD";
                     monedaFinal = "BRL";
                     break;
-                case 7:
-                    monedaFinal = "PEN";
+                case 4:
+                    monedaDeOrigen = "BRL";
+                    monedaFinal = "USD";
                     break;
-                case 8:
-                    monedaFinal = "CNY";
+                case 5:
+                    monedaDeOrigen = "USD";
+                    monedaFinal = "COP";
+                    break;
+                case 6:
+                    monedaDeOrigen = "COP";
+                    monedaFinal = "USD";
                     break;
             }
-            System.out.println("Por favor ingrese el monto que desea convertir.");
-            var montoAConvertir = scanner.nextDouble();
-
-            if (opcion == 9) {
-
-            }
+            System.out.println(montoAConvertir + " " + monedaDeOrigen + " " + "equivalen a: " + montoConvertido + " " + monedaFinal);
 
             String pedido = "https://v6.exchangerate-api.com/v6/1967def449d10c81cd3d43a0/pair/" + monedaDeOrigen
                     +"/"
@@ -108,9 +83,7 @@ public class Principal {
             Gson gson = new Gson();
             ExchangeRate exchangeRate = gson.fromJson(json, ExchangeRate.class);
             Conversion conversion = new Conversion(exchangeRate);
-            System.out.println("La suma de: " + montoAConvertir + conversion);
-
-
+            System.out.println(pedido);
 
 
         }
