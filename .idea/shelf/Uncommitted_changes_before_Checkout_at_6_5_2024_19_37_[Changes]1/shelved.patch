@@ -1,0 +1,11 @@
+Index: src/Request.java
+===================================================================
+diff --git a/src/Request.java b/src/Request.java
+deleted file mode 100644
+--- a/src/Request.java	
++++ /dev/null	
+@@ -1,4 +0,0 @@
+-//Esta clase va a tener los pedidos a la appi.
+-public class Request {
+-
+-}

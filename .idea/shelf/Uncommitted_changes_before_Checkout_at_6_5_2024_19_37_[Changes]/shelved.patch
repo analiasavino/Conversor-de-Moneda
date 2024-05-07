@@ -1,0 +1,248 @@
+Index: src/Principal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import com.google.gson.*;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URI;\r\nimport java.net.http.HttpClient;\r\nimport java.net.http.HttpRequest;\r\nimport java.net.http.HttpResponse;\r\nimport java.util.Scanner;\r\n\r\n\r\npublic class Principal {\r\n    public static void main(String[] args) throws IOException, InterruptedException {\r\n\r\n        //Declaro parametros.\r\n        Scanner scanner = new Scanner(System.in);\r\n        String menu = \"\"\"\r\n                1 Dolar Americano   USD ==> Peso Argentino  ARS\r\n                2 Peso Argentino    ARS ==> Dolar Americano USD\r\n                3 Dolar Americano   USD ==> Real Brasileno  BRL\r\n                4 Real Brasileno    BRL ==> Dolar Americano USD\r\n                5 Dolar Americano   USD ==> Peso Colombinao COP\r\n                6 Peso Colombiano   COP ==> Dolar Americano USD\r\n                7 Otras conversiones. \r\n                9 Para salir.\r\n                \"\"\";\r\n\r\n        System.out.println(\"\\n\"+ \"\\n\" +\"***************************************\");\r\n        System.out.println(\"Bienvenido a nuestro conversor de monedas\");\r\n        System.out.println(\"***************************************\" + '\\n');\r\n        String monedaDeOrigen = \"\";\r\n        String monedaFinal = \"\";\r\n        double montoConvertido = 0;\r\n\r\n        while (true) {\r\n            System.out.println(\"Por favor elija la opcion deseada: \");\r\n            System.out.println(menu);\r\n            var opcion = scanner.nextInt();\r\n            if (opcion == 9)\r\n                break;\r\n            System.out.println(\"Por favor elija el monto que desea convertir\");\r\n            var montoAConvertir = scanner.nextDouble();\r\n\r\n            switch (opcion) {\r\n                case 1:\r\n                    monedaDeOrigen = \"USD\";\r\n                    monedaFinal = \"ARS\";\r\n                    break;\r\n                case 2:\r\n                    monedaDeOrigen = \"ARS\";\r\n                    monedaFinal = \"USD\";\r\n                    break;\r\n                case 3:\r\n                    monedaDeOrigen = \"USD\";\r\n                    monedaFinal = \"BRL\";\r\n                    break;\r\n                case 4:\r\n                    monedaDeOrigen = \"BRL\";\r\n                    monedaFinal = \"USD\";\r\n                    break;\r\n                case 5:\r\n                    monedaDeOrigen = \"USD\";\r\n                    monedaFinal = \"COP\";\r\n                    break;\r\n                case 6:\r\n                    monedaDeOrigen = \"COP\";\r\n                    monedaFinal = \"USD\";\r\n                    break;\r\n            }\r\n            System.out.println(montoAConvertir + \" \" + monedaDeOrigen + \" \" + \"equivalen a: \" + montoConvertido + \" \" + monedaFinal);\r\n\r\n            String pedido = \"https://v6.exchangerate-api.com/v6/1967def449d10c81cd3d43a0/pair/\" + monedaDeOrigen\r\n                    +\"/\"\r\n                    +monedaFinal + \"/\" + montoAConvertir;\r\n\r\n            HttpClient client = HttpClient.newHttpClient();\r\n            HttpRequest request = HttpRequest.newBuilder() //lo que vamos a pedir\r\n                    .uri(URI.create(pedido))\r\n                    .build(); //este build se utiliza xq los objetos HttpRequest no se pueden instanciar.\r\n            HttpResponse<String> response = client\r\n                    .send(request, HttpResponse.BodyHandlers.ofString());\r\n\r\n            String json = response.body();\r\n            Gson gson = new Gson();\r\n            ExchangeRate exchangeRate = gson.fromJson(json, ExchangeRate.class);\r\n            Conversion conversion = new Conversion(exchangeRate);\r\n            System.out.println(pedido);\r\n\r\n\r\n        }\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Principal.java b/src/Principal.java
+--- a/src/Principal.java	
++++ b/src/Principal.java	
+@@ -29,7 +29,7 @@
+         System.out.println("***************************************" + '\n');
+         String monedaDeOrigen = "";
+         String monedaFinal = "";
+-        double montoConvertido = 0;
++
+ 
+         while (true) {
+             System.out.println("Por favor elija la opcion deseada: ");
+@@ -37,7 +37,7 @@
+             var opcion = scanner.nextInt();
+             if (opcion == 9)
+                 break;
+-            System.out.println("Por favor elija el monto que desea convertir");
++            System.out.println("Por favor elija el monto que desea convertir: (sin puntos ni comas)");
+             var montoAConvertir = scanner.nextDouble();
+ 
+             switch (opcion) {
+@@ -66,12 +66,11 @@
+                     monedaFinal = "USD";
+                     break;
+             }
+-            System.out.println(montoAConvertir + " " + monedaDeOrigen + " " + "equivalen a: " + montoConvertido + " " + monedaFinal);
+-
++            //guardo lo enviado por la appi en la variable pedido
+             String pedido = "https://v6.exchangerate-api.com/v6/1967def449d10c81cd3d43a0/pair/" + monedaDeOrigen
+-                    +"/"
+-                    +monedaFinal + "/" + montoAConvertir;
++                    +"/" +monedaFinal + "/" + montoAConvertir;
+ 
++            //Request a la appi
+             HttpClient client = HttpClient.newHttpClient();
+             HttpRequest request = HttpRequest.newBuilder() //lo que vamos a pedir
+                     .uri(URI.create(pedido))
+@@ -79,11 +78,21 @@
+             HttpResponse<String> response = client
+                     .send(request, HttpResponse.BodyHandlers.ofString());
+ 
++            //guardo el cuerpo del JSON recibido desde la appi en un string
+             String json = response.body();
++
++
+             Gson gson = new Gson();
+             ExchangeRate exchangeRate = gson.fromJson(json, ExchangeRate.class);
+-            Conversion conversion = new Conversion(exchangeRate);
+-            System.out.println(pedido);
++            //Instancio la clase Conversion asignandole los parametros indice y monto a convertir
++            Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
++            //instancio la clase Calculo
++            Calculo calculo = new Calculo();
++
++            double montoConvertido =calculo.calcularMontoConvertido(conversion);
++
++            // Imprimir resultado
++            System.out.println(montoAConvertir + " " + monedaDeOrigen + " equivale a: " + montoConvertido + " " + monedaFinal);
+ 
+ 
+         }
+Index: src/Conversion.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import com.google.gson.Gson;\r\n\r\npublic class Conversion {\r\n    //declaro atributos de la clase.\r\n    private String monedaDeOrigen;\r\n    private String monedaFinal;\r\n    private double indiceConversion;\r\n    private double montoAConvertir;\r\n    private double montoConvertido;\r\n\r\n    //creo un objeto a traves de un constructor.\r\n    public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir, double montoConvertido){\r\n        this.monedaDeOrigen = monedaDeOrigen;\r\n        this.monedaFinal = monedaFinal;\r\n        this.montoAConvertir = montoAConvertir;\r\n        this.indiceConversion = indiceConversion;\r\n        this.montoConvertido = getMontoConvertido();\r\n    }\r\n\r\n    public Conversion(ExchangeRate exchangeRate) {\r\n        this.monedaDeOrigen = exchangeRate.base_code();\r\n        this.monedaFinal = exchangeRate.target_code();\r\n        //this.montoConvertido = exchangeRate.conversion_result();\r\n        this.indiceConversion = exchangeRate.conversion_rate();\r\n\r\n    }\r\n\r\n    public double getMontoAConvertir() {\r\n       return montoAConvertir;\r\n    }\r\n\r\n    public double getIndiceConversion() {\r\n        return indiceConversion;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return  \" \" + monedaDeOrigen +\r\n                \" equivale a: \" + montoConvertido + \" \" +\r\n                monedaFinal + \"\\n\"\r\n                ;\r\n    }\r\n\r\n    public void setMontoAConvertir(double montoAConvertir) {\r\n        this.montoAConvertir = montoAConvertir;\r\n    }\r\n\r\n    public double getMontoConvertido() {\r\n        return montoConvertido;\r\n    }\r\n\r\n    public void setMontoConvertido(double montoConvertido) {\r\n        this.montoConvertido = montoConvertido;\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Conversion.java b/src/Conversion.java
+--- a/src/Conversion.java	
++++ b/src/Conversion.java	
+@@ -6,52 +6,47 @@
+     private String monedaFinal;
+     private double indiceConversion;
+     private double montoAConvertir;
+-    private double montoConvertido;
++
+ 
+     //creo un objeto a traves de un constructor.
+-    public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir, double montoConvertido){
++    public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir){
+         this.monedaDeOrigen = monedaDeOrigen;
+         this.monedaFinal = monedaFinal;
+         this.montoAConvertir = montoAConvertir;
+         this.indiceConversion = indiceConversion;
+-        this.montoConvertido = getMontoConvertido();
++
+     }
+ 
+     public Conversion(ExchangeRate exchangeRate) {
+         this.monedaDeOrigen = exchangeRate.base_code();
+         this.monedaFinal = exchangeRate.target_code();
+-        //this.montoConvertido = exchangeRate.conversion_result();
++        this.indiceConversion = exchangeRate.conversion_rate();
++
++    }
++    public Conversion(ExchangeRate exchangeRate, double montoAConvertir) {
++        this.monedaDeOrigen = exchangeRate.base_code();
++        this.monedaFinal = exchangeRate.target_code();
+         this.indiceConversion = exchangeRate.conversion_rate();
+-
++        this.montoAConvertir = montoAConvertir;
+     }
++
+ 
+     public double getMontoAConvertir() {
+        return montoAConvertir;
+     }
+ 
+-    public double getIndiceConversion() {
+-        return indiceConversion;
+-    }
++    public double getIndiceConversion() {return indiceConversion; }
+ 
+     @Override
+     public String toString() {
+         return  " " + monedaDeOrigen +
+-                " equivale a: " + montoConvertido + " " +
++                " equivale a: " + " " +
+                 monedaFinal + "\n"
+                 ;
+     }
+ 
+     public void setMontoAConvertir(double montoAConvertir) {
+         this.montoAConvertir = montoAConvertir;
+-    }
+ 
+-    public double getMontoConvertido() {
+-        return montoConvertido;
+     }
+-
+-    public void setMontoConvertido(double montoConvertido) {
+-        this.montoConvertido = montoConvertido;
+-    }
+-
+-
+ }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d45c9c12-e565-4aca-91d6-93e818dc8e41\" name=\"Changes\" comment=\"Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes\">\r\n      <change afterPath=\"$PROJECT_DIR$/README.md\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Conversion.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/ExchangeRate.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Conversor-de-Moneda.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Conversor-de-Moneda.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Principal.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Principal.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Record\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"ProjectErrors\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2fKwIKG4cbj2YUZpUVyrgzZCB5T\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Application.Principal.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/anuch/Desktop/AluraLatam/gson-2.10.1.jar\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"project.scopes\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Principal\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Principal\" />\r\n      <module name=\"Conversor-de-Moneda\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Principal\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d45c9c12-e565-4aca-91d6-93e818dc8e41\" name=\"Changes\" comment=\"\" />\r\n      <created>1713562995896</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1713562995896</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Creo el menu de bienvenida\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713563870190</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713563870190</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713719185193</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713719185193</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Creo el menu de bienvenida\" />\r\n    <MESSAGE value=\"Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.io.FileNotFoundException\" package=\"java.io\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,12 +5,11 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="d45c9c12-e565-4aca-91d6-93e818dc8e41" name="Changes" comment="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes">
+-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Conversion.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/ExchangeRate.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Conversor-de-Moneda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Conversor-de-Moneda.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Calculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Conversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Conversion.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -39,23 +38,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "Application.Principal.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/anuch/Desktop/AluraLatam/gson-2.10.1.jar",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "project.scopes"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Application.Principal.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/anuch/Downloads/src.rar&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;project.scopes&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="Principal" />
++      <option name="MAIN_CLASS_NAME" value="principal.Principal" />
+       <module name="Conversor-de-Moneda" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -94,6 +93,17 @@
+     </task>
+     <option name="localTasksCounter" value="3" />
+     <servers />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+Index: src/Calculo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Calculo {\r\n\r\n\r\n    private double calculo(Conversion conversion){\r\n        double montoConvertido;\r\n        montoConvertido = conversion.getIndiceConversion() * conversion.getMontoAConvertir();\r\n        return montoConvertido;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/Calculo.java b/src/Calculo.java
+--- a/src/Calculo.java	
++++ b/src/Calculo.java	
+@@ -1,9 +1,10 @@
+ public class Calculo {
+ 
+-
+-    private double calculo(Conversion conversion){
++   public double calcularMontoConvertido(Conversion conversion){
+         double montoConvertido;
+         montoConvertido = conversion.getIndiceConversion() * conversion.getMontoAConvertir();
+         return montoConvertido;
++
+     }
++
+ }
