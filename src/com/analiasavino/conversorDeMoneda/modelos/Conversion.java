@@ -1,4 +1,4 @@
-import com.google.gson.Gson;
+package com.analiasavino.conversorDeMoneda.modelos;
 
 public class Conversion {
     //declaro atributos de la clase.
@@ -6,7 +6,9 @@ public class Conversion {
     private String monedaFinal;
     private double indiceConversion;
     private double montoAConvertir;
+    private  double resultadoConversion;
     private double montoConvertido;
+
 
     //creo un objeto a traves de un constructor.
     public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir, double montoConvertido){
@@ -14,16 +16,25 @@ public class Conversion {
         this.monedaFinal = monedaFinal;
         this.montoAConvertir = montoAConvertir;
         this.indiceConversion = indiceConversion;
-        this.montoConvertido = getMontoConvertido();
+        this.resultadoConversion = montoConvertido;
+    }
+
+    public Conversion(ExchangeRate exchangeRate, double montoAConvertir) {
+        this.monedaDeOrigen = exchangeRate.base_code();
+        this.monedaFinal = exchangeRate.target_code();
+        this.indiceConversion = exchangeRate.conversion_rate();
+        this.montoAConvertir = montoAConvertir;
+        this.resultadoConversion = exchangeRate.conversion_result();
+
     }
 
     public Conversion(ExchangeRate exchangeRate) {
-        this.monedaDeOrigen = exchangeRate.base_code();
-        this.monedaFinal = exchangeRate.target_code();
-        //this.montoConvertido = exchangeRate.conversion_result();
-        this.indiceConversion = exchangeRate.conversion_rate();
-
     }
+    //metodos get and setter
+
+    public String getMonedaDeOrigen() {return monedaDeOrigen;}
+
+    public String getMonedaFinal() {return monedaFinal;}
 
     public double getMontoAConvertir() {
        return montoAConvertir;
@@ -33,12 +44,8 @@ public class Conversion {
         return indiceConversion;
     }
 
-    @Override
-    public String toString() {
-        return  " " + monedaDeOrigen +
-                " equivale a: " + montoConvertido + " " +
-                monedaFinal + "\n"
-                ;
+    public void setMontoConvertido(double montoConvertido) {
+        this.montoConvertido = montoConvertido;
     }
 
     public void setMontoAConvertir(double montoAConvertir) {
@@ -49,9 +56,17 @@ public class Conversion {
         return montoConvertido;
     }
 
-    public void setMontoConvertido(double montoConvertido) {
-        this.montoConvertido = montoConvertido;
+
+    @Override
+    public String toString() {
+        return  " " + monedaDeOrigen +
+                " equivale a: " + montoConvertido + " " +
+                monedaFinal + "\n"
+                ;
     }
+
+
+
 
 
 }

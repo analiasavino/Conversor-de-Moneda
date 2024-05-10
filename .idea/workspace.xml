@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d45c9c12-e565-4aca-91d6-93e818dc8e41" name="Changes" comment="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/calculos/Calculo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/MenuLibreEleccionDeMonedas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/requestApi/ObtenerDatos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Conversor-de-Moneda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Conversor-de-Moneda.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Conversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,18 +69,19 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Principal.executor": "Run",
+    "Application.com.analiasavino.conversorDeMoneda.principal.Principal.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "Prueba3",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anuch/Desktop/AluraLatam/Conversor-de-Moneda",
+    "last_opened_file_path": "C:/Users/anuch/Desktop/AluraLatam/2032-java-aplicando-la-orientacion-a-objetos-aula-02",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.scopes"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.com.analiasavino.conversorDeMoneda.principal.Principal">
     <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Principal" />
       <module name="Conversor-de-Moneda" />
@@ -77,8 +89,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.analiasavino.conversorDeMoneda.principal.Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.analiasavino.conversorDeMoneda.principal.Principal" />
+      <module name="Conversor-de-Moneda" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.analiasavino.conversorDeMoneda.principal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.com.analiasavino.conversorDeMoneda.principal.Principal" />
         <item itemvalue="Application.Principal" />
       </list>
     </recent_temporary>
