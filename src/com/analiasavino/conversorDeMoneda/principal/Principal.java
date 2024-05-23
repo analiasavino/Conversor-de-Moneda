@@ -1,6 +1,7 @@
 package com.analiasavino.conversorDeMoneda.principal; //me indica en que paquete esta la clase Principal
 
 //importo las clases que estoy utilizando que se encuentran en otros paquetes.
+import com.analiasavino.conversorDeMoneda.historial.Historial;
 import com.analiasavino.conversorDeMoneda.modelos.Conversion;
 import com.analiasavino.conversorDeMoneda.modelos.ExchangeRate;
 import com.analiasavino.conversorDeMoneda.calculos.Calculo;
@@ -26,6 +27,8 @@ public class Principal {
       //instancio los objetos que voy a utilizar:
 
       Menues menu1 = new Menues();
+      
+      Historial historial = new Historial();
 
       //Menu de bienvenida
 
@@ -76,6 +79,12 @@ public class Principal {
                 System.out.println("\n" + "Por favor ingrese tal y como figura en el listado la moneda a la que desea convertir" +"\n");
                 monedaFinal = scanner.next();
                 break;
+              case 8:
+                System.out.println("A continuacion encontrara el historial de conversiones realizadas:");
+                System.out.println(historial);
+
+
+
             }
 
         //Solicitamos al usuario que ingrese el monto utilizado.
@@ -92,18 +101,17 @@ public class Principal {
 
           var obtenerDatos = new ObtenerDatos();
 
-        /* el Json obtenido lo guardamos en la variable json que es aquella qeu luego con la ayuda del metodo Gson haremos matchear con
+        /* el Json obtenido lo guardamos en la variable json que es aquella que luego con la ayuda del metodo Gson haremos matchear con
           nuestra clase ExchangeRate. */
 
           var json = obtenerDatos.obtenerDatos(pedido);
           Gson gson = new Gson();
           ExchangeRate exchangeRate = gson.fromJson(json, ExchangeRate.class);
 
+
       //instancio el objeto conversion el cual recibe los atributos de la clase exchangeRate y el monto ingresado x el usuario
         Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
 
-
-          System.out.println(conversion);
 
       //luego debo ejecutar el metodo calcular() de mi clase calculo
         Calculo calculo = new Calculo();
@@ -111,12 +119,18 @@ public class Principal {
       // ahora debo agregar al atributo montoConvertido lo retornado por el metodo calculo
          double montoConvertido = calculo.calcular(conversion);
 
-          System.out.println();
-          System.out.println(montoAConvertir + " " + monedaDeOrigen + " " + "equivalen a: " + montoConvertido + " " + monedaFinal);
-          System.out.println(" " );
+         String respuestaAlCte = montoAConvertir + " " + monedaDeOrigen + " " + "equivalen a: " + montoConvertido + " " + monedaFinal;
+
+         System.out.println("\n" +respuestaAlCte + "\n");
+         System.out.println("*************************");
+
+
+
 
 
         }
 
     }
+
+
 }

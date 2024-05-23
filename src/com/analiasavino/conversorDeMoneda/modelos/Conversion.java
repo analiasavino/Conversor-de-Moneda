@@ -8,24 +8,27 @@ public class Conversion {
     private double montoAConvertir;
     private  double resultadoConversion;
     private double montoConvertido;
+    private String fecha;
 
 
     //creo un objeto a traves de un constructor.
-    public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir, double montoConvertido){
+    public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir, double montoConvertido, String fecha){
         this.monedaDeOrigen = monedaDeOrigen;
         this.monedaFinal = monedaFinal;
         this.montoAConvertir = montoAConvertir;
         this.indiceConversion = indiceConversion;
         this.resultadoConversion = montoConvertido;
+        this.fecha = fecha;
     }
 
     public Conversion(ExchangeRate exchangeRate, double montoAConvertir) {
+
         this.monedaDeOrigen = exchangeRate.base_code();
         this.monedaFinal = exchangeRate.target_code();
         this.indiceConversion = exchangeRate.conversion_rate();
         this.montoAConvertir = montoAConvertir;
         this.resultadoConversion = exchangeRate.conversion_result();
-
+        this.fecha = exchangeRate.time_last_update_utc();
     }
 
     public Conversion(ExchangeRate exchangeRate) {
@@ -56,6 +59,7 @@ public class Conversion {
         return montoConvertido;
     }
 
+    public String getFecha() { return fecha; }
 
     @Override
     public String toString() {

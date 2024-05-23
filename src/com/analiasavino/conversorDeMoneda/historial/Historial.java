@@ -1,2 +1,2 @@
-package com.analiasavino.conversorDeMoneda.historial;public class HistorialDeConversiones {
+package com.analiasavino.conversorDeMoneda.historial;public class Historial {
 }

@@ -16,6 +16,7 @@ public class Menues {
                 5 Dolar Americano   USD ==> Peso Colombinao COP
                 6 Peso Colombiano   COP ==> Dolar Americano USD 
                 7 Otras conversiones. 
+                8 Historial de conversiones.
                 9 Para salir.
                 """;
 
