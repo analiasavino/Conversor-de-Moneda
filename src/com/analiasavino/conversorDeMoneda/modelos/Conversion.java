@@ -12,7 +12,7 @@ public class Conversion {
 
 
     //creo un objeto a traves de un constructor.
-    public Conversion(String monedaDeOrigen, String monedaFinal, double indiceConversion, double montoAConvertir, double montoConvertido, String fecha){
+    public Conversion(){
         this.monedaDeOrigen = monedaDeOrigen;
         this.monedaFinal = monedaFinal;
         this.montoAConvertir = montoAConvertir;

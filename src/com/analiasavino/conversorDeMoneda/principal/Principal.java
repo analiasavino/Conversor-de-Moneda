@@ -111,6 +111,7 @@ public class Principal {
 
       //instancio el objeto conversion el cual recibe los atributos de la clase exchangeRate y el monto ingresado x el usuario
         Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
+          System.out.println(conversion);
 
 
       //luego debo ejecutar el metodo calcular() de mi clase calculo

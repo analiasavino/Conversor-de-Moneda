@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d45c9c12-e565-4aca-91d6-93e818dc8e41" name="Changes" comment="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_5_2024_19_37_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_5_2024_19_37__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/calculos/Calculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/calculos/Calculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/HistorialDeConversiones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Menues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Menues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" afterDir="false" />
     </list>
@@ -35,6 +31,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -45,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/analiasavino/Conversor-de-Moneda.git&quot;,
-    &quot;accountId&quot;: &quot;c27803a5-b28c-449a-9e51-ec4ae67c79e0&quot;
+    &quot;accountId&quot;: &quot;f574e90c-49e6-4324-a42c-fc7d8ad94b4c&quot;
   }
 }</component>
   <component name="ProblemsViewState">

@@ -51,8 +51,8 @@ public class Menues {
                     BTN       | Ngultrum Butanés                     | Bután
                     BWP       | Pula Botsuano                        | Botsuana
                     BYN       | Rublo Bielorruso                     | Bielorrusia
-                BZD | Dólar Beliceño | Belice
-                CAD | Dólar Canadiense | Canadá
+                    BZD       | Dólar Beliceño                       | Belice
+                    CAD       | Dólar Canadiense                     | Canadá
                 CDF | Franco Congoleño | República Democrática del Congo
                 CHF | Franco Suizo | Suiza
                 CLP | Peso Chileno | Chile
