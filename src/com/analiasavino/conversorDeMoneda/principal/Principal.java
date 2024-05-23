@@ -4,8 +4,9 @@ package com.analiasavino.conversorDeMoneda.principal; //me indica en que paquete
 import com.analiasavino.conversorDeMoneda.modelos.Conversion;
 import com.analiasavino.conversorDeMoneda.modelos.ExchangeRate;
 import com.analiasavino.conversorDeMoneda.calculos.Calculo;
-import com.analiasavino.conversorDeMoneda.modelos.MenuLibreEleccionDeMonedas;
 import com.analiasavino.conversorDeMoneda.requestApi.ObtenerDatos;
+import com.analiasavino.conversorDeMoneda.modelos.Menues;
+
 import com.google.gson.Gson;
 
 //importo las librerias java que necesito en funcion de lo que voy haciendo
@@ -13,24 +14,22 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Scanner; //esta libreria me permite interactuar con el usuario
 
+//*********************************************************************
+
 
 public class Principal {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        //Declaro parametros.
-        Scanner scanner = new Scanner(System.in);
-        String menu = """
-                1 Dolar Americano   USD ==> Peso Argentino  ARS
-                2 Peso Argentino    ARS ==> Dolar Americano USD
-                3 Dolar Americano   USD ==> Real Brasileno  BRL
-                4 Real Brasileno    BRL ==> Dolar Americano USD
-                5 Dolar Americano   USD ==> Peso Colombinao COP
-                6 Peso Colombiano   COP ==> Dolar Americano USD
-                7 Otras conversiones. 
-                9 Para salir.
-                """;
+      //Declaro parametros.
+      Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n"+ "\n" +"***************************************");
+      //instancio los objetos que voy a utilizar:
+
+      Menues menu1 = new Menues();
+
+      //Menu de bienvenida
+
+        System.out.println("\n" +"***************************************");
         System.out.println("Bienvenido a nuestro conversor de monedas");
         System.out.println("***************************************" + '\n');
         String monedaDeOrigen = "";
@@ -38,13 +37,13 @@ public class Principal {
 
         while (true) {
           System.out.println("Por favor elija la opcion deseada: ");
-          System.out.println(menu);
+          System.out.println(menu1.getMenuHabituales());
 
           var opcion = scanner.nextInt();
 
           if (opcion == 9)
             break;
-          if (opcion != 7)
+
             switch (opcion) {
               case 1:
                 monedaDeOrigen = "USD";
@@ -70,49 +69,51 @@ public class Principal {
                 monedaDeOrigen = "COP";
                 monedaFinal = "USD";
                 break;
+              case 7:
+                System.out.println(menu1.getMenulibreEleccion());
+                System.out.println("\n" + "Por favor ingrese tal y como figura en el listado la moneda desde la que desea convertir" +"\n");
+                monedaDeOrigen = scanner.next();
+                System.out.println("\n" + "Por favor ingrese tal y como figura en el listado la moneda a la que desea convertir" +"\n");
+                monedaFinal = scanner.next();
+                break;
             }
 
-          MenuLibreEleccionDeMonedas menuLibreEleccion = null;
+        //Solicitamos al usuario que ingrese el monto utilizado.
 
-          if (opcion == 7) {
-            menuLibreEleccion = new MenuLibreEleccionDeMonedas();
-            String pedido = menuLibreEleccion.OtrasConversiones();
-            break;
-          }
-
-          System.out.println("Por favor elija el monto que desea convertir");
+          System.out.println("\n"+ "Por favor elija el monto que desea convertir" +"\n");
           var montoAConvertir = scanner.nextDouble();
 
-          String pedido = "https://v6.exchangerate-api.com/v6/1967def449d10c81cd3d43a0/pair/" + monedaDeOrigen + "/" +
-                monedaFinal + "/" + montoAConvertir;
+        // guardamos en la variable pedido el pedido.
+
+          String pedido = "https://v6.exchangerate-api.com/v6/1967def449d10c81cd3d43a0/pair/" + monedaDeOrigen.toUpperCase()+ "/" +
+                monedaFinal.toUpperCase()+ "/" + montoAConvertir;
+
+        // Obtenemos lod datos desde la claes datos.
 
           var obtenerDatos = new ObtenerDatos();
+
+        /* el Json obtenido lo guardamos en la variable json que es aquella qeu luego con la ayuda del metodo Gson haremos matchear con
+          nuestra clase ExchangeRate. */
+
           var json = obtenerDatos.obtenerDatos(pedido);
-
-//          HttpClient client = HttpClient.newHttpClient();
-//          HttpRequest request = HttpRequest.newBuilder() //lo que vamos a pedir
-//                .uri(URI.create(pedido))
-//                .build(); //este build se utiliza xq los objetos HttpRequest no se pueden instanciar.
-//          HttpResponse<String> response = client
-//                .send(request, HttpResponse.BodyHandlers.ofString());
-//
-//          String json = response.body();
-
           Gson gson = new Gson();
-
           ExchangeRate exchangeRate = gson.fromJson(json, ExchangeRate.class);
 
-          //instancio el objeto conversion el cual recibe los atributos de la clase exchangeRate y el monto ingresado x el usuario
-          Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
-
-          //luego debo ejecutar el metodo calcular() de mi clase calculo
-          Calculo calculo = new Calculo();
-
-          // ahora debo agregar al atributo montoConvertido lo retornado por el metodo calculo
-          double montoConvertido = calculo.calcular(conversion);
+      //instancio el objeto conversion el cual recibe los atributos de la clase exchangeRate y el monto ingresado x el usuario
+        Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
 
 
+          System.out.println(conversion);
+
+      //luego debo ejecutar el metodo calcular() de mi clase calculo
+        Calculo calculo = new Calculo();
+
+      // ahora debo agregar al atributo montoConvertido lo retornado por el metodo calculo
+         double montoConvertido = calculo.calcular(conversion);
+
+          System.out.println();
           System.out.println(montoAConvertir + " " + monedaDeOrigen + " " + "equivalen a: " + montoConvertido + " " + monedaFinal);
+          System.out.println(" " );
 
 
         }
