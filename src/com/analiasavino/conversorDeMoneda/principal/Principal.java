@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 //importo las librerias java que necesito en funcion de lo que voy haciendo
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner; //esta libreria me permite interactuar con el usuario
 
 //*********************************************************************
@@ -27,8 +28,6 @@ public class Principal {
       //instancio los objetos que voy a utilizar:
 
       Menues menu1 = new Menues();
-      
-      Historial historial = new Historial();
 
       //Menu de bienvenida
 
@@ -44,9 +43,8 @@ public class Principal {
 
           var opcion = scanner.nextInt();
 
-          if (opcion == 9)
+          if(opcion == 9)
             break;
-
             switch (opcion) {
               case 1:
                 monedaDeOrigen = "USD";
@@ -80,11 +78,9 @@ public class Principal {
                 monedaFinal = scanner.next();
                 break;
               case 8:
-                System.out.println("A continuacion encontrara el historial de conversiones realizadas:");
-                System.out.println(historial);
-
-
-
+                Historial historial = new Historial();
+                System.out.println("Este es el historial de conversiones realizadas hasta el momento: \n " + historial);
+                break;
             }
 
         //Solicitamos al usuario que ingrese el monto utilizado.
@@ -108,11 +104,10 @@ public class Principal {
           Gson gson = new Gson();
           ExchangeRate exchangeRate = gson.fromJson(json, ExchangeRate.class);
 
-
       //instancio el objeto conversion el cual recibe los atributos de la clase exchangeRate y el monto ingresado x el usuario
-        Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
-          System.out.println(conversion);
 
+
+        Conversion conversion = new Conversion(exchangeRate, montoAConvertir);
 
       //luego debo ejecutar el metodo calcular() de mi clase calculo
         Calculo calculo = new Calculo();
@@ -120,18 +115,19 @@ public class Principal {
       // ahora debo agregar al atributo montoConvertido lo retornado por el metodo calculo
          double montoConvertido = calculo.calcular(conversion);
 
-         String respuestaAlCte = montoAConvertir + " " + monedaDeOrigen + " " + "equivalen a: " + montoConvertido + " " + monedaFinal;
+         conversion.setMontoAConvertir(montoAConvertir);
+         conversion.setMonedaDeOrigen(monedaDeOrigen);
+         conversion.setMontoConvertido(montoConvertido);
+         conversion.setMonedaFinal(monedaFinal);
+         conversion.setIndiceConversion(conversion.getIndiceConversion());
+         conversion.setFecha(exchangeRate.time_last_update_utc());
 
-         System.out.println("\n" +respuestaAlCte + "\n");
+
+         System.out.println("\n" +conversion);
          System.out.println("*************************");
-
-
-
-
-
-        }
+      }
 
     }
 
-
 }
+

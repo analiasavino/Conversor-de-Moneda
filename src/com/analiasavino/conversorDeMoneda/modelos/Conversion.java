@@ -1,5 +1,9 @@
 package com.analiasavino.conversorDeMoneda.modelos;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
+
+import java.util.function.DoubleConsumer;
+
 public class Conversion {
     //declaro atributos de la clase.
     private String monedaDeOrigen;
@@ -35,13 +39,24 @@ public class Conversion {
     }
     //metodos get and setter
 
+
+    public void setMonedaDeOrigen(String monedaDeOrigen) { this.monedaDeOrigen = monedaDeOrigen; }
+
     public String getMonedaDeOrigen() {return monedaDeOrigen;}
+
+    public void setMonedaFinal(String monedaFinal) {this.monedaFinal = monedaFinal; }
 
     public String getMonedaFinal() {return monedaFinal;}
 
-    public double getMontoAConvertir() {
-       return montoAConvertir;
+    public void setMontoAConvertir(double montoAConvertir) {
+        this.montoAConvertir = montoAConvertir;
     }
+
+    public double getMontoAConvertir() {
+        return montoAConvertir;
+    }
+
+    public void setIndiceConversion(double indiceConversion) {this.indiceConversion = indiceConversion; }
 
     public double getIndiceConversion() {
         return indiceConversion;
@@ -51,26 +66,21 @@ public class Conversion {
         this.montoConvertido = montoConvertido;
     }
 
-    public void setMontoAConvertir(double montoAConvertir) {
-        this.montoAConvertir = montoAConvertir;
-    }
-
     public double getMontoConvertido() {
         return montoConvertido;
     }
 
+    public void setResultadoConversion(double resultadoConversion) {this.resultadoConversion = resultadoConversion; }
+
+    public double getResultadoConversion() { return resultadoConversion;  }
+
+    public void setFecha(String fecha) {this.fecha = fecha; }
+
     public String getFecha() { return fecha; }
+
 
     @Override
     public String toString() {
-        return  " " + monedaDeOrigen +
-                " equivale a: " + montoConvertido + " " +
-                monedaFinal + "\n"
-                ;
-    }
-
-
-
-
+        return montoAConvertir + " " + monedaDeOrigen + " equivale/n a: " + montoConvertido + monedaFinal +  "\n";}
 
 }

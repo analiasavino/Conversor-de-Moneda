@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Menues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Menues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
