@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d45c9c12-e565-4aca-91d6-93e818dc8e41" name="Changes" comment="Creo el menu de bienvenida&#10;Emplee las clases HttpClient pare reallizar solicitudes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/calculos/Calculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/calculos/Calculo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/historial/Historial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/Conversion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/modelos/ExchangeRate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/analiasavino/conversorDeMoneda/principal/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Prueba3" />
+        <entry key="$PROJECT_DIR$" value="Prueba" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,22 +59,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Principal.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.analiasavino.conversorDeMoneda.principal.Principal.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Prueba4&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/anuch/Desktop/AluraLatam/2032-java-aplicando-la-orientacion-a-objetos-aula-02&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Principal.executor": "Run",
+    "Application.com.analiasavino.conversorDeMoneda.principal.Principal.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Prueba1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/anuch/Desktop/AluraLatam/2032-java-aplicando-la-orientacion-a-objetos-aula-02",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.analiasavino.conversorDeMoneda.historial" />
@@ -141,7 +141,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Prueba1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

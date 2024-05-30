@@ -1,9 +1,5 @@
 package com.analiasavino.conversorDeMoneda.modelos;
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
-
-import java.util.function.DoubleConsumer;
-
 public class Conversion {
     //declaro atributos de la clase.
     private String monedaDeOrigen;
@@ -16,14 +12,7 @@ public class Conversion {
 
 
     //creo un objeto a traves de un constructor.
-    public Conversion(){
-        this.monedaDeOrigen = monedaDeOrigen;
-        this.monedaFinal = monedaFinal;
-        this.montoAConvertir = montoAConvertir;
-        this.indiceConversion = indiceConversion;
-        this.resultadoConversion = montoConvertido;
-        this.fecha = fecha;
-    }
+
 
     public Conversion(ExchangeRate exchangeRate, double montoAConvertir) {
 
@@ -81,6 +70,6 @@ public class Conversion {
 
     @Override
     public String toString() {
-        return montoAConvertir + " " + monedaDeOrigen + " equivale/n a: " + montoConvertido + monedaFinal +  "\n";}
+        return getFecha() + " " + montoAConvertir + " " + monedaDeOrigen + " equivale/n a: " + montoConvertido + (" ") + monedaFinal +  "\n";}
 
 }

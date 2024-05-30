@@ -1,23 +1,28 @@
 package com.analiasavino.conversorDeMoneda.historial;
-
 import com.analiasavino.conversorDeMoneda.modelos.Conversion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Historial{
 
-  public ArrayList<Conversion> historial(Conversion conversion1){
-    ArrayList<Conversion> historial = new ArrayList<>();
+  //creo la variable a nivel global de clase. (cuando la clase principal se ejecute se va crear un elemnto list vacio)
 
-      historial.add(conversion1);
+  private List<Conversion> historialConversion = new ArrayList<>();
 
+  //creo un metodo que agrega a la lista creada las conversiones
 
-
-    historial.add(conversion1);
-    return historial;
+  public void addHistorialConversion(Conversion conversion){
+    historialConversion.add(conversion);
+      return;
 
   }
 
+  //creo un metodo que retorna la lista de conversiones.
+
+  public List<Conversion> getHistorialConversion() {
+    return historialConversion;
+  }
 }
 
 
